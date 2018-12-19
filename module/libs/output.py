@@ -35,12 +35,24 @@ def get_output(service):
             outputs.append(output)
         if perfdata != "":
             perfdatas.append(perfdata)
-    output = " # ".join(outputs)
+    #Old code block, not sure why he didn't just use a map....
+    #output = " # ".join(outputs)
+    output = ""
     perfdata = " ".join(perfdatas)
+    for element in outputs:
+        output = output + formatElement(element)
+    output = output[:-2]
     if perfdata == '':
         return output
     else:
         return output + " | " + perfdata
+
+def formatElement(element):
+    a,b = element.split(":")
+    if(b is None or b == ""):
+        return str(a) + " = " + "ERROR " + "(" + str(b) + "), "
+    else:
+        return str(a) + " = " + "OK " + "(" + str(b) + "), "
 
 
 def format_output(service, ds_name):

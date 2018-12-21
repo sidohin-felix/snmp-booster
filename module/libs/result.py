@@ -73,8 +73,10 @@ def set_output_and_status(check_result):
         else:
             # If the mapping is done
             # Get output
+            #Removed because this is BAD
             output = get_output(check_result['db_data'])
             # Handle triggers
+            logger.error("DEBUG RESULT: " + str(output))
             if check_result['db_data'].get('triggers', {}) != {}:
                 error_message, exit_code = get_trigger_result(check_result['db_data'])
                 # Handle errors

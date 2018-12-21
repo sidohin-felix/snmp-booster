@@ -116,6 +116,7 @@ def rpn_calculator(rpn_list):
                     raise e
         stack.append(el3)
 
+    logger.error("DEBUG UTILS " + str(stack))
     assert len(stack) <= 1
 
     if len(stack) == 1:

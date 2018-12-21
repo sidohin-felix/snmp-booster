@@ -193,9 +193,9 @@ def get_trigger_result(service):
                             # element is already a value
                             value = element
                         rpn_list.append(value)
-
                     # Launch rpn calculator
                     try:
+                        logger.error("DEBUG TRIGGER " + str(rpn_list))
                         ret = rpn_calculator(rpn_list)
                     except Exception as exp:
                         error_message = ("RPN calculation Error: %s - "
